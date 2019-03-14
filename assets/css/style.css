@@ -1,0 +1,15 @@
+#header-title{
+  background-color: #255F7F;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+#profile-photo,#vcard-qr{
+  width: 100%;
+  height: auto;
+}
+#profile-data{
+  color: #49C0FF;
+}
+#header-data{
+  vertical-align: middle !important;
+}

@@ -1,0 +1,90 @@
+{
+    "personalData": {
+        "name": "Juan Marcelo",
+        "lastname": "Panasiti",
+        "bornFull": "August 15th, 1989",
+        "age": "31",
+        "address": "Godoy Cruz, Mendoza"
+    },
+    "contactData": {
+        "phone": "(261) 639 - 3214",
+        "email": "juanpanasiti@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/juanmpanasiti",
+        "github": "https://github.com/juanpanasiti/",
+        "socialNetworks": {
+            "facebook": "https://www.facebook.com/juanpanasiti/",
+            "twitter": "https://twitter.com/JPanasiti",
+            "instagram": "https://www.instagram.com/juanmpanasiti/"
+        }
+    },
+    "experience": [
+        {
+            "place": "Own projects",
+            "description": "Almost all that I program (toy apps mostly) I upload to my Github account.",
+            "startDate": "",
+            "endingDate": ""
+        },
+        {
+            "place": "Municipalidad de Godoy Cruz",
+            "description": "My day to day tasks include maintenance analog, digital and IP phones, among other administratives tasks. Many times, I must to research for solutions to problems that it's not part of my common tasks, but they are related with some office's project or something like that.",
+            "startDate": "August 2014",
+            "endingDate": ""
+        },
+        {
+            "place": "Optimizar PC",
+            "description": "Freelance. PCs technical service",
+            "startDate": "January 2014",
+            "endingDate": ""
+        }
+    ],
+    "skills": {
+        "principal": [
+            {
+                "name": "Java",
+                "seniority": "Trainee",
+                "level": 1
+            },
+            {
+                "name": "JavaScript: NodeJS y ReactJS (MERN stack)",
+                "seniority": "Jr",
+                "level": 2
+            },
+            {
+                "name": "Basic web (HTML5, CSS and JS)",
+                "seniority": "Trainee",
+                "level": 1
+            }
+        ],
+        "others": [
+            {
+                "name": "Git/Github"
+            },
+            {
+                "name": "Terminal/Console"
+            },
+            {
+                "name": "OSs: Linux y windows"
+            },
+            {
+                "name": "IDEs: VS Code, IntelliJ, NetBeans"
+            }
+        ]
+    },
+    "education": {
+        "universityDegree": [
+            {
+                "university": "UTN-FRM",
+                "title": "Técnico Universitario en Programación",
+                "status": "Finished (title pending)"
+            }
+        ],
+        "courses": [
+            {
+                "courseName":"Java Fullstack",
+                "startingDate": "August 2020",
+                "endingDate":"December 2020",
+                "status":"In progress"
+            }
+        ]
+    }
+}

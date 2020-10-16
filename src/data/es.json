@@ -86,5 +86,13 @@
                 "status":"Cursando"
             }
         ]
+    },
+    "aboutMe": {
+        "title": "Acerca de mi",
+        "description": [
+            "Recientemente recibido de Técnico Universitario en Programación en la UTN-FRM, estoy en busca de mi primer trabajo como desarrollador. Aunque no tengo mucha experiencia, lo compenso con ganas de aprender y enfrentar desafíos.",
+            "Como no me gusta 'quedarme quieto', suelo tener varias 'toy-app' con las que suelo probar y jugar un poco con las caracteríasticas de los lenguajes y herramientas que esté viendo en el momento (todo normalmente subido a mi perfil de Github).",
+            "Dentro el vasto campo de la programación me interesa capacitarme en el stack MERN (lo cual actualmente estoy haciendo por mi cuenta) y me gustaría entrar en el desarrollo mobile (Kotlin o React Native me llaman la atención)"
+        ]
     }
 }

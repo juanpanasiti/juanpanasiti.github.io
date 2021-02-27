@@ -8,7 +8,11 @@ import 'fontsource-roboto';
 // };
 
 const theme = createMuiTheme({
+    
     palette: {
+        action: {
+            disabled: "rgba(100,100,100,1)"
+        },
         common:{
             white: '#FFFFFF',
             black:'#000000'
@@ -65,6 +69,7 @@ const theme = createMuiTheme({
             secondary:"#141619",
             hint:"#0D6AA0",
         },
+
 
     },
 });

@@ -1,6 +1,6 @@
-import { Typography } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Footer from './components/organisms/Footer';
 import Navbar from './components/organisms/Navbar';
 import Contact from './pages/contact/Contact';
 import Home from './pages/home/Home';
@@ -9,7 +9,7 @@ import Projects from './pages/projects/Projects';
 function App() {
     return (
         <Router>
-            <div className='App'>
+            <div>
                 <Navbar />
 
                 <Switch>
@@ -23,6 +23,8 @@ function App() {
                         <Contact />
                     </Route>
                 </Switch>
+                
+                <Footer/>
             </div>
         </Router>
     );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button as ButtonM } from '@material-ui/core';
 
 const Button = (props) => {
-    const { variant, color, label, endIcon, startIcon, className, fullWidth, disabled, component, linkTo } = props;
+    const { variant, color, label, endIcon, startIcon, className, fullWidth, disabled, component, linkTo, size } = props;
     return (
         <ButtonM
             component={component}
@@ -14,6 +14,7 @@ const Button = (props) => {
             endIcon={endIcon}
             startIcon={startIcon}
             className={className}
+            size={size}
             fullWidth={fullWidth}>
             {label}
         </ButtonM>
@@ -25,7 +26,8 @@ Button.defaultProps = {
     fullWidth: false,
     disabled: false,
     component: ButtonM,
-    linkTo: ''
+    linkTo: '',
+    size: 'medium',
 };
 Button.propTypes = {
     variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
@@ -37,6 +39,7 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     component: PropTypes.object,
     linkTo: PropTypes.string,
+    size: PropTypes.oneOf(['small','medium','large'])
 };
 
 export default Button;

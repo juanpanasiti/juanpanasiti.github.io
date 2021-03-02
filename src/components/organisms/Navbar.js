@@ -26,10 +26,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     list: {
-        width: 250,
-    },
-    fullList: {
-        width: 'auto',
+        width: 200,
     },
 }));
 
@@ -48,7 +45,7 @@ const Navbar = (props) => {
     };
 
     const list = (
-        <div className='' role='presentation' onClick={hideDrawer}>
+        <div className={classes.list} role='presentation' onClick={hideDrawer}>
             <List>
                 <ListItem button component={Link} to='/'>
                     <ListItemIcon>{<HomeIcon />}</ListItemIcon>
@@ -128,12 +125,7 @@ const Navbar = (props) => {
                         />
                     </Hidden>
                     <Hidden mdUp>
-                        <IconButton
-                            edge='start'
-                            className={classes.menuButton}
-                            color='inherit'
-                            aria-label='menu'
-                            onClick={showDrawer}>
+                        <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='menu' onClick={showDrawer}>
                             <MenuIcon />
                         </IconButton>
                     </Hidden>

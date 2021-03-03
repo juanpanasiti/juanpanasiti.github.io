@@ -10,21 +10,30 @@ import Text from '../atoms/Text';
 
 const useStyles = makeStyles((theme) => ({
     footer: {
-        backgroundColor: '#888',
-        display:'flex',
-        flexDirection:'column',
-        justifyContent:'space-around',
-        alignItems:'center',
-        width:'100wv'
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+        display: 'flex',
+
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: '100wv',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            // backgroundColor: theme.palette.secondary.main,
+        },
+        [theme.breakpoints.up('md')]: {
+            flexDirection: 'row',
+            // backgroundColor: theme.palette.primary.main,
+        },
     },
     socials: {
-        display:'flex'
+        display: 'flex',
     },
     data: {
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center'
-    }
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
 }));
 
 const Footer = () => {
@@ -48,9 +57,10 @@ const Footer = () => {
                     <GitHubIcon color='secondary' fontSize='large' />
                 </IconButton>
             </Box>
+
             <Box className={classes.data}>
-                <Text children='Desarrollado por mi' variant='subtitle1'  />
-                <Text children='Mendoza - Argentina 2021' variant='subtitle2'/>
+                <Text children='Desarrollado por mi' variant='subtitle1' />
+                <Text children='Mendoza - Argentina 2021' variant='subtitle2' />
             </Box>
         </div>
     );

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
         display: 'flex',
-
+        padding: '20px 0',
         justifyContent: 'space-around',
         alignItems: 'center',
         width: '100wv',

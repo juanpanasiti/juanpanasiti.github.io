@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, IconButton, makeStyles, Toolbar, withWidth, Hidden } from '@material-ui/core';
+import { AppBar, IconButton, makeStyles, Toolbar, withWidth, Hidden, Avatar } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import CodeIcon from '@material-ui/icons/Code';
 import SendIcon from '@material-ui/icons/Send';
@@ -78,6 +78,7 @@ const Navbar = (props) => {
             <AppBar>
                 <Toolbar>
                     {/* Logo */}
+                    <Avatar alt='logo JP.dev' src='logo370.png' style={{borderRadius:'0',marginRight:'10px'}} />
                     <Text variant='h4' className={classes.title}>
                         <strong>JP</strong>
                         <small>.dev</small>

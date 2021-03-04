@@ -12,17 +12,19 @@ function App() {
             <div>
                 <Navbar />
 
-                <Switch>
-                    <Route exact path='/'>
-                        <Home />
-                    </Route>
-                    <Route exact path='/projects'>
-                        <Projects />
-                    </Route>
-                    <Route exact path='/contact'>
-                        <Contact />
-                    </Route>
-                </Switch>
+                <main>
+                    <Switch>
+                        <Route exact path='/'>
+                            <Home />
+                        </Route>
+                        <Route exact path='/projects'>
+                            <Projects />
+                        </Route>
+                        <Route exact path='/contact'>
+                            <Contact />
+                        </Route>
+                    </Switch>
+                </main>
                 
                 <Footer/>
             </div>

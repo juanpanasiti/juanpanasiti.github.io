@@ -1,34 +1,20 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { GraphQLClient, ClientContext } from 'graphql-hooks';
+import env from "react-dotenv";
 
-import Footer from './components/organisms/Footer';
-import Navbar from './components/organisms/Navbar';
-import Contact from './pages/contact/Contact';
-import Home from './pages/home/Home';
-import Projects from './pages/projects/Projects';
+import { RouterApp } from './routes/RouterApp';
+
+const client = new GraphQLClient({
+    url: 'https://graphql.datocms.com/',
+    headers: {
+        'Authorization': `Bearer ${env.DATOCMS_API_KEY}`
+    }
+});
 
 function App() {
     return (
-        <Router>
-            <div>
-                <Navbar />
-
-                <main>
-                    <Switch>
-                        <Route exact path='/'>
-                            <Home />
-                        </Route>
-                        <Route exact path='/projects'>
-                            <Projects />
-                        </Route>
-                        <Route exact path='/contact'>
-                            <Contact />
-                        </Route>
-                    </Switch>
-                </main>
-                
-                <Footer/>
-            </div>
-        </Router>
+        <ClientContext.Provider value={client}>
+            <RouterApp />
+        </ClientContext.Provider>
     );
 }
 

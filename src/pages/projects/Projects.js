@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import SwipeableViews from 'react-swipeable-views';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -7,60 +8,44 @@ import { useTheme } from '@material-ui/core';
 import StorageIcon from '@material-ui/icons/Storage';
 import WebIcon from '@material-ui/icons/Web';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import { useQuery } from 'graphql-hooks';
+
 import TabPanel from './components/TabPanel';
 import { getProjects } from '../../services/projectsService';
 import ProjectSummary from '../../components/molecules/ProjectSummary';
+import { getAllProjects } from '../../graphql/projectsQueries';
+import { Loading } from '../../components/atoms/Loading';
 
 const Projects = () => {
+    //HOOKS
     const theme = useTheme();
     const [value, setValue] = useState(0);
-    const [state, setState] = useState({ isLoaded: false, backProjects: [], frontProjects: [], mobileProjects: [] });
-    const { backProjects, frontProjects, mobileProjects } = state;
+    const [projects, setProjects] = useState({
+        backend: [],
+        frontend: [],
+        mobile: [],
+    });
 
+    const { loading, error, data } = useQuery(getAllProjects);
     const isMounted = useRef(true);
+    useEffect(() => {
+        if (data && isMounted.current) {
+            setProjects({
+                ...projects,
+                backend: data.allProjects.filter((project) => project.kind === 'backend'),
+                frontend: data.allProjects.filter((project) => project.kind === 'frontend'),
+                mobile: data.allProjects.filter((project) => project.kind === 'mobile'),
+            });
+        }
+    }, [data]);
 
     useEffect(() => {
-        const fillProjects = async () => {
-            const projects = await getProjects();
-            const backProjects = [];
-            const frontProjects = [];
-            const mobileProjects = [];
-
-            for (const project of projects) {
-                switch (project.type) {
-                    case 'back-end':
-                        backProjects.push(project);
-                        break;
-                    case 'front-end':
-                        frontProjects.push(project);
-                        break;
-                    case 'mobile':
-                        mobileProjects.push(project);
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
-            if (isMounted.current) {
-                setState({
-                    ...state,
-                    isLoaded: true,
-                    backProjects: backProjects,
-                    frontProjects: frontProjects,
-                    mobileProjects: mobileProjects,
-                });
-            }
-        };
-        fillProjects();
-
         return () => {
             isMounted.current = false;
         };
     }, []);
 
-    console.log(state);
+    //FUNCTIONS
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -79,29 +64,33 @@ const Projects = () => {
                     variant='fullWidth'
                     onChange={handleChange}
                     aria-label='projects types'>
-                    <Tab label='Front-end' icon={<WebIcon />} disabled={frontProjects.length === 0} />
-                    <Tab label='Back-end' icon={<StorageIcon />} disabled={backProjects.length === 0} />
-                    <Tab label='Mobile' icon={<PhoneAndroidIcon />} disabled={mobileProjects.length === 0} />
+                    <Tab label='Front-end' icon={<WebIcon />} disabled={projects.frontend.length === 0} />
+                    <Tab label='Back-end' icon={<StorageIcon />} disabled={projects.backend.length === 0} />
+                    <Tab label='Mobile' icon={<PhoneAndroidIcon />} disabled={projects.mobile.length === 0} />
                 </Tabs>
             </Paper>
 
-            <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-                <TabPanel value={value} index={0} dir={theme.direction}>
-                    {frontProjects.map((project) => (
-                        <ProjectSummary title={project.title} data={project.description} imgURL={project.cover} />
-                    ))}
-                </TabPanel>
-                <TabPanel value={value} index={1} dir={theme.direction}>
-                    {backProjects.map((project) => (
-                        <ProjectSummary title={project.title} data={project.description} imgURL={project.cover} />
-                    ))}
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    {mobileProjects.map((project) => (
-                        <ProjectSummary title={project.title} data={project.description} imgURL={project.cover} />
-                    ))}
-                </TabPanel>
-            </SwipeableViews>
+            {loading && <Loading />}
+
+            {!loading && (
+                <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
+                    <TabPanel value={value} index={0} dir={theme.direction}>
+                        {projects.frontend.map((project) => (
+                            <ProjectSummary title={project.title} data={project.summary} imgURL={project.frontImage.url} />
+                        ))}
+                    </TabPanel>
+                    <TabPanel value={value} index={1} dir={theme.direction}>
+                        {projects.backend.map((project) => (
+                            <ProjectSummary title={project.title} data={project.description} imgURL={project.cover} />
+                        ))}
+                    </TabPanel>
+                    <TabPanel value={value} index={2} dir={theme.direction}>
+                        {projects.mobile.map((project) => (
+                            <ProjectSummary title={project.title} data={project.description} imgURL={project.cover} />
+                        ))}
+                    </TabPanel>
+                </SwipeableViews>
+            )}
         </div>
     );
 };
